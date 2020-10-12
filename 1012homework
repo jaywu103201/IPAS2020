@@ -1,9 +1,12 @@
 # ARP Spoofing(ARP欺騙)
+ARP(Address Resolution(解析) Protocol(協定))(位址解析協定)
 
-```
-https://ithelp.ithome.com.tw/articles/10193536
 
-https://www.uuu.com.tw/Public/content/article/20/20200217.htm
+ARP欺騙的運作原理是由攻擊者發送假的ARP封包到網路上，尤其是送到閘道器上。其目的是要讓送至特定的IP位址的流量被錯誤送到攻擊者所取代的地方。
+因此攻擊者可將這些流量另行轉送到真正的閘道（被動式封包嗅探，passive sniffing）或是篡改後再轉送（中間人攻擊，man-in-the-middle attack）。
+攻擊者亦可將ARP封包導到不存在的MAC位址以達到阻斷服務攻擊的效果，例如netcut軟體。
 
-https://en.wikipedia.org/wiki/ARP_spoofing
-```
+#ARP 攻擊可能的用途
+1.把別人的網路無效化（指向一個不存在的 MAC，使其發了包也沒人會收）
+2.DoS 別人（發假的 ARP 給大家，把所有的 IP 都指向他的 MAC 位置，使他被封包淹死）
+3.中間人攻擊（幫你架 Proxy，攔截你原本的封包，拆了看內容，然後幫你轉發）

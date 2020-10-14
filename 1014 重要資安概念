@@ -1,0 +1,31 @@
+#重要資安概念
+
+
+
+邊界與分類 (Boundary and classification)
+     1.防火牆、VPN、ID&P侵偵測與防禦（Intrusion Detection and Provention) 閘道防毒
+     
+     
+職務區隔 (Segregation of duties, SOD)
+     1.僅給予職務執行上所必須知悉之內容，並設定明確的權責歸屬
+     2.意指將一個重要的工作或職責分散給多個人做保管，以防止這個重要資訊被洩露出去，即使被攻擊只有取得部份的資訊
+     
+     
+縱深防禦 (Layered defense, defense in depth) 又稱多層防禦
+     1.以多層電腦安全技術去減輕被駭客入侵的風
+
+
+單一脆弱點 (Single point of failure, SPOF)
+     1.是指系統中一旦失效，就會讓整個系統無法運作的部件[1]，換句話說，單點故障即會整體故障
+     
+     
+阿奇里斯腱 (Achilles heel) 
+     1.致命的弱點
+  
+木桶理論 (Bucker principle）
+     1.木桶的最大裝水量，取決於最短的一根木材，若其中有一根木板比其他的短，那麼木桶裝滿水的高度就是這根短木板的長度
+
+
+僅知原則 (Need to know)
+     1.完成一件任務所需要知道的內容及所需要知道的流程，僅給予完成工作的最少量的應知事項即可。
+     

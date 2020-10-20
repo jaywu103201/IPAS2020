@@ -37,6 +37,15 @@ Penetration Test (滲透測試) PT
   -taskkill /? (查看tastklill 相關指令)
   
   
+  Tasklist
+   -https://docs.microsoft.com/zh-tw/windows-server/administration/windows-commands/tasklist
+   -顯示目前在本機電腦或遠端電腦上正在執行的處理序清單
+   
+   
+   netstat
+    -
+  
+  
 
 
 

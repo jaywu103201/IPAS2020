@@ -28,8 +28,10 @@ Penetration Test (滲透測試) PT
                          (Meterpreter是Metasploit框架中的一個擴充套件模組)
 
 
-  nmap 兩大技術: 一般服務掃描  vs NSE掃描  Nmap Scripting Engine (NSE)  
-  -https://www.itread01.com/content/1549490595.html
+  nmap 兩大技術:
+    NSE掃描  Nmap Scripting Engine (NSE)  -https://www.itread01.com/content/1549490595.html
+    一般服務掃描 https://codingnote.cc/zh-tw/p/19300/
+  
 
  
  Windows kill process

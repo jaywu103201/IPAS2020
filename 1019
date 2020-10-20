@@ -21,11 +21,14 @@ hardware(硬體) security (安全)
  CVE 
   - 公共漏洞和暴露（英語：CVE, Common Vulnerabilities and Exposures） 
   
+  
+  - ifconfig  (可以查看自己ip mac)(linux)       ipconfig(windows)
+  
  1. 確認網段中有那些系統網路
-  - ifconfig  (可以查看自己ip mac)(linux)       ipconfig(windows)    
+    netdiscover -r 10.0.2.0/24
     
  2.某主機是否 liue 
-  - netdiscover -r 10.0.2.4
+  - netdiscover -r 10.0.2.0/24
  
  
  3.OS(作業系統)?
@@ -35,12 +38,30 @@ hardware(硬體) security (安全)
   -Google Hacking 
   -CVE Details
   -Nmap   (nmap.org/nsedoc)  (ms-08-067) (ms-17-010)
+
+
+
+5.Exploitions 
+
+  -1.msfconsole 
+   
+   2.search ms08_067 (搜尋漏洞攻擊指令)
+   
+   3.use expolit adress(使用攻擊指令)
+   
+   4.show options (查看設定 )   
+   
+   5.set host (RHOST:遠程主機或是目標主機。    LHOST你本地可以讓目標主機連接的IP地址)
+   
+   6.exploit (攻擊)
+    
+   
   
-  攻
   
   
   
-  防
+  
+ 
   
   
   

@@ -54,6 +54,23 @@ hardware(硬體) security (安全)
    5.set host (RHOST:遠程主機或是目標主機。    LHOST你本地可以讓目標主機連接的IP地址)
    
    6.exploit (攻擊)
+   
+   
+   
+   
+  如何防禦?
+  
+  1. 要如何查看目前連線 誰連線?
+    -Netstat -ano  (查看PID(Process ID)(行程識別碼)
+  
+  
+  2.如何中斷對方連線?
+   -taskkill /?(查看關於taskill 的使用方法)
+   -taskkill /F /PID.... (斷開)
+   -/F 指定要強制中止的處理程序
+   -/PID process id 指定要中止的處理程序的PID。
+   
+   
     
    
   

@@ -1,0 +1,45 @@
+Penetration Test (滲透測試) PT
+ -「滲透測試」（Penetration Test）是以駭客思維與手法的入侵演練測試
+ 
+
+
+滲透測試與攻擊實務---簡易型步驟
+1.確認網路有哪些機器開啟(live)
+ - netdiscover -r
+2.確認某主機是否存在
+ - ping IP
+3.確認某主機的OS作業系統:是什麼版本
+ - nmap -O (IP)
+4.確認某主機開啟哪些服務(SERVICE):服務(SERVICE)與PORT
+ -netstat  
+
+5.確認遠方系統是否存在有某種漏洞{單一漏洞掃描}
+   單一漏洞掃描 (查看是否有某一個漏洞) VS 漏洞掃描器 (查看有哪些漏洞)
+   nmap官方查詢 >> vuln >> MS-08-067 VS  nmap --script vuln <IP>
+
+6.Exploitation攻擊測試 ==>metasploit
+ -1.選擇並組態一個攻擊代碼(exploit, 利用漏洞來進入目標系統的代碼）；
+  2.(可選）檢查目標系統是否會被此代碼影響；
+  3.選擇並組態一個有效負載 (payload, 在成功進入後在目標系統上執行的代碼；例如，一個遠端殼層或一個VNC伺服器）；
+  4.選擇編碼方式，使入侵預防系統，忽略已被編碼的有效負載；
+  5.執行攻擊代碼。
+
+7.Post-Exploitation ==> meterpreter
+                         (Meterpreter是Metasploit框架中的一個擴充套件模組)
+
+
+  nmap 兩大技術: 一般服務掃描  vs NSE掃描  Nmap Scripting Engine (NSE)  
+  -https://www.itread01.com/content/1549490595.html
+
+ 
+ Windows kill process
+  -https://blog.twtnn.com/2013/11/windowstasklisttaskkillprocess.html
+  -taskkill /? (查看tastklill 相關指令)
+  
+  
+
+
+
+
+
+

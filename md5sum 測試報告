@@ -1,0 +1,53 @@
+
+
+  md5sum --help
+Usage: md5sum [OPTION]... [FILE]...
+Print or check MD5 (128-bit) checksums.
+
+With no FILE, or when FILE is -, read standard input.
+
+  -b, --binary         read in binary mode
+  -c, --check          read MD5 sums from the FILEs and check them
+      --tag            create a BSD-style checksum
+  -t, --text           read in text mode (default)
+  -z, --zero           end each output line with NUL, not newline,
+                       and disable file name escaping
+
+The following five options are useful only when verifying checksums:
+      --ignore-missing  don't fail or report status for missing files
+      --quiet          don't print OK for each successfully verified file
+      --status         don't output anything, status code shows success
+      --strict         exit non-zero for improperly formatted checksum lines
+  -w, --warn           warn about improperly formatted checksum lines
+
+      --help     display this help and exit
+      --version  output version information and exit
+
+
+
+
+
+[gedit test.txt]
+
+
+[cat test.txt ]
+asdaodhauiduiahdahd
+adhauduhaudaidjiajdi 
+
+a
+dadadad
+
+[md5sum test.txt] 
+e5d10b0661ccb95b3559835624283d22  test.txt
+
+
+[cat test.txt]
+Asdaodhauiduiahdahd
+adhauduhaudaidjiajdi 
+
+a
+
+
+[md5sum test.txt] 
+5f54c2eacc5ea4e3ff01a63d5283548d  test.txt
+

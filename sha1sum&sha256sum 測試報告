@@ -1,0 +1,40 @@
+(160-bit)
+
+[cat text.txt]
+dasiohiad
+adad
+
+
+[sha1sum text.txt]
+c98e60f3e0c405f3e81caabb95cf0603ae4687eb  text.txt
+
+[cat text.txt] 
+Dasiohiad
+adad
+
+
+
+[sha1sum text.txt] 
+5ed59fb664c88f0fa9e9f9166223855549961254  text.txt
+
+
+
+===================================================================================
+(256.bit)
+
+[sha256sum 1.txt] 
+6efe9ff6f1401061b144db0a5d9e2ea6c4ac6c57be31434e1a4285f9a76d8884  1.txt
+
+
+[sha256sum 1.txt] 
+e5285df2ae14d885b0072ed9bc2f0d912f5c3d3058b9f90504952ab138558d4a  1.txt
+
+
+
+
+
+
+
+
+
+

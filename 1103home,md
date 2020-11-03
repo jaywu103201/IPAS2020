@@ -1,0 +1,110 @@
+# Crossover Error Rate 
+```
+所謂的實體像是指紋(fingerprints), 虹膜(Iris), 視網膜(Retina), 面紋(facial looks), 掌型(hand geometry)…等等。
+而特微的就像是聲紋(Voice inflections), 鍵擊(Keyboard strokes), 簽名特徵(Signature motions)
+那麼在生物認證中，總有一個精準度的評斷吧，不然我們如何採購正確驗證設備呢?
+在整個生物認證中，被拿來做為評比的重要的三個指標：
+FRR(False Reject Rate),FAR(FalseAccept Rate) ,CER(Crossover Error Rate)
+FRR:錯誤拒絕率，把對的驗證為錯誤的屬於Type I error
+FAR:錯誤接受率，把錯誤的驗證為對的屬於Type II error
+CER:交叉錯誤率，集合FRR及FAR兩個曲線的交叉點。
+```
+
+# 靜態 與 動態 特徵
+```
+靜態的是與生俱來，不容易改變的像指紋、虹膜…等等，動態的就像是擊鍵、聲紋
+```
+
+# Brute-force attack
+```
+蠻力攻擊（英語：Brute-force attack）[1]，又稱為窮舉攻擊（英語：Exhaustive attack）或暴力破解，是一種密碼分析的方法，即將密碼進行逐個推算直到找出真正的密碼為止
+例如：一個已知是四位數並且全部由阿拉伯數字組成的密碼，其可能共有10000種組合，因此最多嘗試9999次就能找到正確的密碼
+```
+
+# Dictionary Attack
+```
+字典攻擊法，使用於密碼破解程序，也就是駭客會準備一些常用的字集，先猜這些密碼，而大幅縮短破解密碼的時間
+```
+
+# 跨網站指令碼（英語：Cross-site scripting，通常簡稱為：XSS）
+```
+一種網站應用程式的安全漏洞攻擊，是代碼注入的一種。它允許惡意使用者將程式碼注入到網頁上，其他使用者在觀看網頁時就會受到影響
+
+1. Stored XSS (儲存型)
+會被保存在伺服器資料庫中的 JavaScript 代碼引起的攻擊即為 Stored XSS，最常見的就是論壇文章、留言板等等，因為使用者可以輸入任意內容，
+若沒有確實檢查，那使用者輸入如 <script> 等關鍵字就會被當成正常的 HTML 執行，標籤的內容也會被正常的作為 JavaScript 代碼執行。
+
+2. Reflected XSS (反射型)
+Reflected 是指不會被儲存在資料庫中，而是由網頁後端直接嵌入由前端使用者所傳送過來的內容造成的，
+最常見的就是以 GET 方法傳送資料給伺服器時，伺服器未檢查就將內容回應到網頁上所產生的漏洞。
+
+3. DOM-Based XSS
+了解此種 XSS 類型時，務必事先了解 DOM 是什麼，DOM 全稱為 Document Object Model，用以描述 HTML 文件的表示法，
+它讓我們可以使用 JavaScript 動態產生完整的網頁，而不必透過伺服器。
+
+因此 DOM-Based XSS 就是指網頁上的 JavaScript 在執行過程中，沒有詳細檢查資料使得操作 DOM 的過程代入了惡意指令。
+```
+
+# 網路釣魚（Phishing)
+```
+企圖從電子通訊中，透過偽裝成信譽卓著的法人媒體以獲得如用戶名稱、密碼和信用卡明細等個人敏感資訊的犯罪詐騙過程
+```
+
+
+# mutual authentication (相互認證)
+```
+在相互認證方式下，不僅會對通信進行加密和解密，並且還會要求端點通過提供證書來認證自身。證書是以加密方式簽名的文檔，旨在向對方保證使用該證書的端點的身份。相互認證將針對各個端點啟用。
+```
+
+# pass the ticket 
+```
+Pass The Ticket： 如果我們能夠拿到用戶的TGT，並將其導入到內存，就可以冒充該用戶獲得其訪問權限
+
+```
+
+# pass the hash 
+```
+傳遞雜湊是一種利用竊取而來的憑證所施行的攻擊技術，常被用於進階的攻擊並對組織造成重大的風險。此一技術牽涉
+到攻擊者從某台電腦中竊取到帳號憑證，並利用它對網路中其它的存取點進行認證。傳遞雜湊的攻擊無需純文字密碼，
+而可讓攻擊者使用密碼散列作認證
+```
+
+# DDOS 分散式阻斷服務攻擊（distributed denial-of-service attack)
+```
+當駭客使用網路上兩個或以上被攻陷的電腦作為「殭屍」向特定的目標發動「阻斷服務」式攻擊時
+```
+
+
+```
+retina 虹膜
+fingerprint 指紋
+```
+
+
+# AWS Identity and Access Management (IAM)
+```
+是一種 Web 服務，讓您能夠安全地控制對 AWS 資源的存取。您可以使用 IAM 來控制 (已登入) 的身分驗證和授權使用資源的 (許可)。
+
+https://docs.aws.amazon.com/zh_tw/IAM/latest/UserGuide/introduction.html
+```
+
+# Single sign-on (單一登入)
+```
+一種對於許多相互關連，但是又是各自獨立的軟體系統，提供存取控制的屬性。當擁有這項屬性時，當使用者登入時，就可以取得所有系統的存取權限
+
+降低存取第三方網站的風險（不儲存用戶密碼，或在外部管理）。
+減少因不同的用戶名稱和密碼組合而帶來的密碼疲勞。
+減少為相同的身分重新輸入密碼所花費的時間。
+因減少與密碼相關的呼叫IT服務台的次數而降低IT成本
+```
+
+
+# 公開金鑰基礎建設（英語：Public Key Infrastructure，縮寫：PKI）
+```
+以公鑰密碼學為基礎衍生出來的架構，其基礎建置包含憑證機構（Certification Authority ,CA）、註冊中心（Register Authority, RA）、
+目錄服務（Directory Service ,DS）伺服器。由RA統籌、審核用戶的憑證申請，
+將憑證申請送至CA處理後發出憑證，並將憑證公告至DS中
+
+
+https://www.informationsecurity.com.tw/article/article_detail.aspx?aid=46
+```

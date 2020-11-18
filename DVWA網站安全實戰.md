@@ -34,11 +34,135 @@ docker run -p 80:80 -t vulnerables/web-dvwa
 
 # 2.測試
 
-### command injection
+### 2.1command injection
 ```
 
-Impossible Command Injection Source
+```
+![表單.jpg](pic/表單.jpg) 
 
+
+原始碼分析
+```
+<?php
+
+if( isset( $_POST[ 'Submit' ]  ) ) {
+    // Get input
+    $target = $_REQUEST[ 'ip' ];
+
+    // Determine OS and execute the ping command.
+    if( stristr( php_uname( 's' ), 'Windows NT' ) ) {
+        // Windows
+        $cmd = shell_exec( 'ping  ' . $target );
+    }
+    else {
+        // *nix
+        $cmd = shell_exec( 'ping  -c 4 ' . $target );
+    }
+
+    // Feedback for the end user
+    echo "<pre>{$cmd}</pre>";
+}
+
+?>
+```
+### low註解說明
+
+客戶端原始碼註解
+```
+
+	<form name="ping" action="#" method="post">
+			<p>
+				Enter an IP address:
+				<input type="text" name="ip" size="30">
+				<input type="submit" name="Submit" value="Submit">
+			</p>
+
+	</form>
+```
+
+伺服器接收資料的程式分析
+```
+<?php
+
+//PHP 使用$_POST接收客戶端傳來的資料
+//https://www.wibibi.com/info.php?tid=144
+//https://www.runoob.com/php/php-post.html
+//https://www.webtech.tw/info.php?tid=34
+
+if( isset( $_POST[ 'Submit' ]  ) ) {
+    $target = $_REQUEST[ 'ip' ];
+    //  Get input　使用$_REQUEST來接收傳來的資料
+    //  $target =你輸入的IP
+　　//  完全沒有做任何輸入驗證（input validation）
+
+    // Determine OS and execute the ping command.
+    if( stristr( php_uname( 's' ), 'Windows NT' ) ) {
+        // Windows
+        $cmd = shell_exec( 'ping  ' . $target );
+    }
+    else {
+        // *nix
+        $cmd = shell_exec( 'ping  -c 4 ' . $target );
+    }
+
+    // Feedback for the end user
+    echo "<pre>{$cmd}</pre>";
+}
+
+?>
+```
+
+### 中階防護程式碼
+```
+if( isset( $_POST[ 'Submit' ]  ) ) {
+    $target = $_REQUEST[ 'ip' ];
+
+    // Set blacklist 設定黑名單
+    $substitutions = array(
+        '&&' => '',
+        ';'  => '',
+    );
+
+    // Remove any of the charactars in the array (blacklist).
+    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+```
+### 攻擊中階防護程式
+```
+黑名單(blacklist)技術 ===>超容易被繞過
+```
+
+```
+127.2.3.4 | pwd
+127.2.3.4 > pwd
+```
+
+### 高級防護程式
+```
+if( isset( $_POST[ 'Submit' ]  ) ) {
+    // Get input
+    $target = trim($_REQUEST[ 'ip' ]);
+
+    // Set blacklist
+    $substitutions = array(
+        '&'  => '',
+        ';'  => '',
+        '| ' => '',
+        '-'  => '',
+        '$'  => '',
+        '('  => '',
+        ')'  => '',
+        '`'  => '',
+        '||' => '',
+    );
+
+    // Remove any of the charactars in the array (blacklist).
+    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+```
+### 攻擊高級防護程式
+```
+127.2.3.4 |pwd
+```
+### 終極防護程式 ====>impossible啦!
 ```
 <?php
 
@@ -82,105 +206,70 @@ generateSessionToken();
 
 ?>
 ```
+# 2.2.SQLi
+###  攻擊低階程式(low-level)
+```
+正常輸入
+1
+.....
+```
+```
+輸入攻擊碼:
 
-High Command Injection Source
+1' or '1'='1
+```
+
+原始碼分析
+
 ```
 <?php
 
-if( isset( $_POST[ 'Submit' ]  ) ) {
+if( isset( $_REQUEST[ 'Submit' ] ) ) {
     // Get input
-    $target = trim($_REQUEST[ 'ip' ]);
+    $id = $_REQUEST[ 'id' ];
 
-    // Set blacklist
-    $substitutions = array(
-        '&'  => '',
-        ';'  => '',
-        '| ' => '',
-        '-'  => '',
-        '$'  => '',
-        '('  => '',
-        ')'  => '',
-        '`'  => '',
-        '||' => '',
-    );
+    // Check database
+    $query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
+    $result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ) or die( '<pre>' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '</pre>' );
 
-    // Remove any of the charactars in the array (blacklist).
-    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+    // Get results
+    while( $row = mysqli_fetch_assoc( $result ) ) {
+        // Get values
+        $first = $row["first_name"];
+        $last  = $row["last_name"];
 
-    // Determine OS and execute the ping command.
-    if( stristr( php_uname( 's' ), 'Windows NT' ) ) {
-        // Windows
-        $cmd = shell_exec( 'ping  ' . $target );
-    }
-    else {
-        // *nix
-        $cmd = shell_exec( 'ping  -c 4 ' . $target );
+        // Feedback for end user
+        echo "<pre>ID: {$id}<br />First name: {$first}<br />Surname: {$last}</pre>";
     }
 
-    // Feedback for the end user
-    echo "<pre>{$cmd}</pre>";
-}
-
-?>
-```
-Medium Command Injection Source
-```
-<?php
-
-if( isset( $_POST[ 'Submit' ]  ) ) {
-    // Get input
-    $target = $_REQUEST[ 'ip' ];
-
-    // Set blacklist
-    $substitutions = array(
-        '&&' => '',
-        ';'  => '',
-    );
-
-    // Remove any of the charactars in the array (blacklist).
-    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
-
-    // Determine OS and execute the ping command.
-    if( stristr( php_uname( 's' ), 'Windows NT' ) ) {
-        // Windows
-        $cmd = shell_exec( 'ping  ' . $target );
-    }
-    else {
-        // *nix
-        $cmd = shell_exec( 'ping  -c 4 ' . $target );
-    }
-
-    // Feedback for the end user
-    echo "<pre>{$cmd}</pre>";
-}
-
-?>
-```
-```
-Low Command Injection Source
-<?php
-
-
-if( isset( $_POST[ 'Submit' ]  ) ) {
-    // Get input
-    $target = $_REQUEST[ 'ip' ];
-
-    // Determine OS and execute the ping command.
-    if( stristr( php_uname( 's' ), 'Windows NT' ) ) {
-        // Windows
-        $cmd = shell_exec( 'ping  ' . $target );
-    }
-    else {
-        // *nix
-        $cmd = shell_exec( 'ping  -c 4 ' . $target );
-    }
-
-    // Feedback for the end user
-    echo "<pre>{$cmd}</pre>";
+    mysqli_close($GLOBALS["___mysqli_ston"]);
 }
 
 ?> 
+```
 
+#### SQL==structured query language
+```
+SELECT first_name, last_name 
+FROM users 
+WHERE user_id = '$id';
+```
 
+```
+正常輸入 1
+SELECT first_name, last_name 
+FROM users 
+WHERE user_id = '1';
+```
 
+```
+攻擊輸入 1 ==> 1' or '1'='1
+SELECT first_name, last_name 
+FROM users 
+WHERE user_id = '  1' or '1'='1  ';
+
+SELECT first_name, last_name 
+FROM users 
+
+脫褲
 ```

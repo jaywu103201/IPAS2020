@@ -273,3 +273,13 @@ FROM users
 
 脫褲
 ```
+
+
+
+
+Reflected Cross Site Scripting (XSS)
+
+```
+
+
+```
